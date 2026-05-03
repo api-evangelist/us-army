@@ -1,0 +1,265 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "US Army Public API"
+  description: "US Army Public API providing access to Army news articles, events, and official announcements."
+  tags:
+    - Army
+    - Federal Government
+    - Military
+    - News
+    - Public Information
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+capability:
+  consumes:
+    - type: http
+      namespace: army-public
+      baseUri: https://api.army.mil/api/v1
+      description: "US Army Public API - articles, news, and events"
+      resources:
+        - name: article
+          path: /article/{id}
+          description: "US Army news articles"
+          operations:
+            - name: get-article-by-id
+              method: GET
+              description: "Find and retrieve a specific Army article by its unique ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Article unique identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: articles
+          path: /articles
+          description: "Collection of US Army news articles"
+          operations:
+            - name: get-articles
+              method: GET
+              description: "Retrieve a list of US Army news articles"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query string"
+                - name: tag
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by tag"
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of articles to return"
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+                - name: from
+                  in: query
+                  type: string
+                  required: false
+                  description: "Start date filter (ISO 8601)"
+                - name: to
+                  in: query
+                  type: string
+                  required: false
+                  description: "End date filter (ISO 8601)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: news
+          path: /news
+          description: "US Army press releases and news items"
+          operations:
+            - name: get-news
+              method: GET
+              description: "Retrieve US Army press releases and official news"
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of items to return"
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: events
+          path: /events
+          description: "US Army public events and activities"
+          operations:
+            - name: get-events
+              method: GET
+              description: "Retrieve US Army public events"
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of events to return"
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+                - name: from
+                  in: query
+                  type: string
+                  required: false
+                  description: "Start date filter"
+                - name: to
+                  in: query
+                  type: string
+                  required: false
+                  description: "End date filter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: army-public-rest
+      resources:
+        - path: /v1/articles/{id}
+          name: article
+          description: "Get an Army article by ID"
+          operations:
+            - method: GET
+              name: get-article-by-id
+              description: "Retrieve a specific Army article"
+              call: "army-public.get-article-by-id"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/articles
+          name: articles
+          description: "List Army articles"
+          operations:
+            - method: GET
+              name: get-articles
+              description: "Search and list Army news articles"
+              call: "army-public.get-articles"
+              with:
+                q: "rest.q"
+                tag: "rest.tag"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/news
+          name: news
+          description: "List Army press releases"
+          operations:
+            - method: GET
+              name: get-news
+              description: "Get Army news and press releases"
+              call: "army-public.get-news"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/events
+          name: events
+          description: "List Army events"
+          operations:
+            - method: GET
+              name: get-events
+              description: "Get Army public events"
+              call: "army-public.get-events"
+              with:
+                limit: "rest.limit"
+                from: "rest.from"
+                to: "rest.to"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: army-public-mcp
+      transport: http
+      tools:
+        - name: get-army-article
+          description: "Get a specific US Army news article by ID"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-article-by-id"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-army-articles
+          description: "Search and list US Army news articles by keyword, tag, or date range"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-articles"
+          with:
+            q: "tools.q"
+            tag: "tools.tag"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-army-news
+          description: "Get US Army press releases and official news announcements"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-news"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-army-events
+          description: "Get US Army public events and activities"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-events"
+          with:
+            limit: "tools.limit"
+            from: "tools.from"
+            to: "tools.to"
+          outputParameters:
+            - type: object
+              mapping: "$."

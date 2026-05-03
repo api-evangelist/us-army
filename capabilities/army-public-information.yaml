@@ -1,0 +1,150 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "US Army Public Information"
+  description: >-
+    Unified public information capability for the US Army, providing access to Army news articles,
+    press releases, and public events. Used by journalists, researchers, and public information
+    officers to access official Army content programmatically.
+  tags:
+    - Army
+    - Federal Government
+    - Military
+    - News
+    - Public Affairs
+    - Media
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+capability:
+  consumes:
+    - import: army-public
+      location: ./shared/army-public.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: army-information-api
+      description: "Unified REST API for US Army public information and news."
+      resources:
+        - path: /v1/articles/{id}
+          name: article
+          description: "Retrieve a specific Army article by ID"
+          operations:
+            - method: GET
+              name: get-article
+              description: "Get a single Army news article"
+              call: "army-public.get-article-by-id"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/articles
+          name: articles
+          description: "Search and list Army news articles"
+          operations:
+            - method: GET
+              name: list-articles
+              description: "List and search Army news articles"
+              call: "army-public.get-articles"
+              with:
+                q: "rest.q"
+                tag: "rest.tag"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/news
+          name: news
+          description: "Army press releases and official news"
+          operations:
+            - method: GET
+              name: list-news
+              description: "List Army news and press releases"
+              call: "army-public.get-news"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/events
+          name: events
+          description: "Army public events"
+          operations:
+            - method: GET
+              name: list-events
+              description: "List Army public events"
+              call: "army-public.get-events"
+              with:
+                limit: "rest.limit"
+                from: "rest.from"
+                to: "rest.to"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: army-information-mcp
+      transport: http
+      description: "MCP server for AI-assisted access to US Army public news and information."
+      tools:
+        - name: get-army-article
+          description: "Retrieve a specific US Army news article by its unique identifier"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-article-by-id"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-army-news
+          description: "Search US Army news articles by keyword, subject tag, or date range"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-articles"
+          with:
+            q: "tools.q"
+            tag: "tools.tag"
+            limit: "tools.limit"
+            from: "tools.from"
+            to: "tools.to"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-army-press-releases
+          description: "List official US Army press releases and news announcements"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-news"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-army-events
+          description: "List upcoming US Army public events and activities"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "army-public.get-events"
+          with:
+            limit: "tools.limit"
+            from: "tools.from"
+            to: "tools.to"
+          outputParameters:
+            - type: object
+              mapping: "$."

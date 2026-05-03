@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "army": "https://www.army.mil/vocab/",
+
+    "GovernmentOrganization": "GovernmentOrganization",
+    "NewsArticle": "NewsArticle",
+    "Event": "Event",
+    "Person": "Person",
+    "ImageObject": "ImageObject",
+
+    "id": "@id",
+    "title": "headline",
+    "summary": "description",
+    "body": "articleBody",
+    "author": "author",
+    "publishedDate": {
+      "@id": "datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "updatedDate": {
+      "@id": "dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "tags": "keywords",
+    "imageUrl": {
+      "@id": "image",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "url",
+      "@type": "@id"
+    },
+    "sourceOrg": "publisher",
+
+    "ArmyArticle": "army:ArmyArticle",
+    "ArmyEvent": "army:ArmyEvent",
+    "ArmyNewsItem": "army:ArmyNewsItem",
+    "ArmyUnit": "army:ArmyUnit",
+    "MilitaryCommand": "army:MilitaryCommand",
+    "ArmyInstallation": "army:ArmyInstallation",
+
+    "USARMY": {
+      "@id": "army:USARMY",
+      "@type": "GovernmentOrganization"
+    },
+
+    "startDate": {
+      "@id": "startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endDate": {
+      "@id": "endDate",
+      "@type": "xsd:dateTime"
+    },
+    "location": "location",
+    "category": "eventStatus"
+  }
+}

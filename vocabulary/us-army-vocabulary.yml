@@ -1,0 +1,156 @@
+name: US Army Vocabulary
+description: >-
+  Vocabulary and taxonomy for the United States Army, covering organizational structure,
+  military occupational specialties, operational concepts, and technology and API terminology.
+url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/vocabulary/us-army-vocabulary.yml
+created: '2026-05-03'
+modified: '2026-05-03'
+
+categories:
+  - name: Organizational Structure
+    description: US Army organizational units and hierarchy
+    terms:
+      - term: United States Army
+        abbreviation: USA
+        definition: >-
+          The land service branch of the United States Armed Forces and the oldest and largest
+          branch of the military.
+      - term: Army Headquarters
+        abbreviation: HQ DA
+        definition: "Headquarters, Department of the Army, Washington, D.C."
+      - term: Army Command
+        abbreviation: ACOM
+        definition: >-
+          A major Army command that is directly subordinate to the Headquarters of the Department
+          of the Army (e.g., FORSCOM, TRADOC, AMC, USSOCOM).
+      - term: Army Corps
+        definition: >-
+          A formation commanded by a lieutenant general, typically consisting of two or more
+          divisions with supporting elements.
+      - term: Division
+        definition: >-
+          A large military unit of ground forces commanded by a major general, typically consisting
+          of three or more brigades and 10,000-15,000 soldiers.
+      - term: Brigade
+        definition: >-
+          A military unit composed of regiments or battalions, commanded by a colonel, typically
+          consisting of 2,000-5,000 soldiers.
+      - term: Battalion
+        definition: >-
+          A tactical military unit composed of two to six companies, commanded by a lieutenant colonel.
+      - term: Company
+        definition: >-
+          A military unit usually consisting of 100-200 soldiers commanded by a captain.
+
+  - name: Personnel and Careers
+    description: Army personnel classifications and career terms
+    terms:
+      - term: Military Occupational Specialty
+        abbreviation: MOS
+        definition: >-
+          The designator code for each job specialty in the US Army, used to classify roles
+          and assign soldiers.
+      - term: Officer
+        definition: >-
+          A commissioned officer (O-1 through O-10) who holds a commission from the President
+          of the United States.
+      - term: Warrant Officer
+        abbreviation: WO
+        definition: >-
+          A highly specialized expert and trainer who serves primarily in an advisory capacity
+          at unit and organizational levels.
+      - term: Non-Commissioned Officer
+        abbreviation: NCO
+        definition: >-
+          An enlisted soldier (Corporal through Sergeant Major) who has been given authority by
+          a commissioned officer.
+      - term: Enlisted
+        definition: "A soldier who has enlisted in the Army at the E-1 through E-9 pay grades."
+      - term: Active Duty
+        definition: "Full-time military service in the Regular Army."
+      - term: National Guard
+        definition: >-
+          The reserve component of the US Army, organized under each state with federal readiness
+          obligations.
+      - term: Army Reserve
+        definition: >-
+          The federal reserve component of the US Army, providing trained units and individuals
+          to the Army in time of need.
+
+  - name: Operational Concepts
+    description: Key Army operational and doctrinal terms
+    terms:
+      - term: Unified Land Operations
+        abbreviation: ULO
+        definition: >-
+          The Army's operational concept describing how Army forces seize, retain, and exploit
+          the initiative to gain and maintain a position of relative advantage.
+      - term: Combined Arms
+        definition: >-
+          The integration of arms capabilities to achieve an effect that no single element could
+          achieve alone (infantry, armor, artillery, aviation, engineers, etc.).
+      - term: Force Projection
+        definition: >-
+          The ability to deploy US military forces from CONUS or forward stations to a theater
+          of operations.
+      - term: Logistics
+        definition: >-
+          The science of planning and carrying out the movement and maintenance of military forces,
+          including supply, maintenance, transportation, and services.
+      - term: Intelligence
+        definition: >-
+          The product resulting from the collection, processing, integration, evaluation, analysis,
+          and interpretation of available information on foreign countries or areas.
+      - term: OPFOR
+        expansion: Opposing Force
+        definition: >-
+          Forces used in military exercises that simulate enemy tactics and capabilities for
+          training purposes.
+
+  - name: Technology and Digital
+    description: Army technology, digital transformation, and API concepts
+    terms:
+      - term: Army Digital Transformation
+        definition: >-
+          The Army's strategic initiative to modernize IT infrastructure, migrate to cloud services,
+          and adopt modern software development practices.
+      - term: Army Enterprise Cloud Management Agency
+        abbreviation: ACMA
+        definition: >-
+          The Army organization responsible for managing cloud services and modernizing the Army's
+          IT enterprise.
+      - term: Mission Command
+        definition: >-
+          The exercise of authority and direction by a commander using mission orders to enable
+          disciplined initiative within the commander's intent. Also an Army software ecosystem
+          for command and control.
+      - term: Army Public API
+        definition: >-
+          The publicly available REST API at api.army.mil providing access to Army news, articles,
+          and public information using OpenAPI 3 specification.
+      - term: OAS3
+        expansion: OpenAPI Specification 3
+        definition: >-
+          The third major version of the OpenAPI Specification used by the US Army Public API
+          for documenting REST endpoints.
+      - term: Code.mil
+        definition: >-
+          The Department of Defense open source portal enabling DoD to share and contribute to
+          open source software.
+
+  - name: Installations and Facilities
+    description: Types of Army facilities and installations
+    terms:
+      - term: Army Installation
+        definition: >-
+          A military facility owned or controlled by the Army, including bases, forts, camps,
+          and reservations.
+      - term: Fort
+        definition: "A traditional permanent Army installation, typically a large base with training facilities."
+      - term: Army Garrison
+        definition: >-
+          The permanent military organization that provides services and support to units,
+          soldiers, families, retirees, and DA civilians on an installation.
+      - term: Training Area
+        definition: >-
+          Designated land areas on Army installations used for individual and collective military training.

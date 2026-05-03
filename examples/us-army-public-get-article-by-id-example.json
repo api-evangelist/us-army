@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.army.mil/api/v1/article/123456"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "123456",
+      "title": "Army Launches New Recruiting Initiative for Cyber Warriors",
+      "summary": "The US Army announces a new recruitment drive targeting cybersecurity professionals to fill critical cyber defense and offensive cyber operations roles.",
+      "body": "WASHINGTON — The United States Army today announced a comprehensive new recruiting initiative aimed at attracting top cybersecurity talent to serve in Army cyber units. The program, which launches this month, will offer competitive enlistment bonuses, accelerated advancement opportunities, and specialized training at Fort Gordon, Georgia...",
+      "author": "Staff Sgt. Sarah Johnson, Army Public Affairs",
+      "publishedDate": "2025-06-15T14:30:00Z",
+      "updatedDate": "2025-06-15T16:00:00Z",
+      "tags": [
+        "Cyber",
+        "Recruiting",
+        "Army Cyber Command",
+        "Technology"
+      ],
+      "imageUrl": "https://api.army.mil/e2/c/images/2025/06/15/cyber-recruiting.jpg",
+      "url": "https://www.army.mil/article/123456/army_launches_new_recruiting_initiative",
+      "sourceOrg": "Army Public Affairs"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-schema/us-army-article-schema.json",
+  "title": "US Army Article",
+  "description": "Schema for a US Army news article returned from the Army Public API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique article identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Article headline or title"
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "Brief summary or lead paragraph"
+    },
+    "body": {
+      "type": ["string", "null"],
+      "description": "Full article body text"
+    },
+    "author": {
+      "type": ["string", "null"],
+      "description": "Article author or byline"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Publication date and time in ISO 8601 format"
+    },
+    "updatedDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last update date and time"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Subject tags categorizing the article content"
+    },
+    "imageUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to the article's featured image"
+    },
+    "url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Canonical URL for the article on army.mil"
+    },
+    "sourceOrg": {
+      "type": ["string", "null"],
+      "description": "Publishing Army organization, command, or unit"
+    }
+  },
+  "required": ["id", "title", "publishedDate"]
+}

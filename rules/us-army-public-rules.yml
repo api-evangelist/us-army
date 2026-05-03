@@ -1,0 +1,59 @@
+extends: spectral:oas
+rules:
+  army-operations-have-tags:
+    description: All US Army API operations must have at least one tag
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  army-paths-use-v1-prefix:
+    description: All Army API paths should use the /api/v1 prefix via servers configuration
+    severity: info
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".*\/v[0-9].*"
+
+  army-get-operations-have-200:
+    description: All GET operations must define a 200 response
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: responses.200
+      function: truthy
+
+  army-operations-have-operation-ids:
+    description: All Army API operations must have operationId for SDK generation
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  army-parameters-have-descriptions:
+    description: All parameters should have descriptions
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  army-responses-have-schemas:
+    description: All 200 responses should define a content schema
+    severity: warn
+    given: "$.paths[*][*].responses.200"
+    then:
+      field: content
+      function: truthy
+
+  army-server-https:
+    description: US Army API servers must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
