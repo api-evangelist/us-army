@@ -1,0 +1,148 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: US Army Public API — Articles
+  description: 'US Army Public API — Articles. 2 operations. Lead operation: Get Article By ID. Self-contained Naftiko capability
+    covering one Us Army business surface.'
+  tags:
+  - Us Army
+  - Articles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_ARMY_API_KEY: US_ARMY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-articles
+    baseUri: https://api.army.mil/api/v1
+    description: US Army Public API — Articles business capability. Self-contained, no shared references.
+    resources:
+    - name: article-id
+      path: /article/{id}
+      operations:
+      - name: getarticlebyid
+        method: GET
+        description: Get Article By ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The unique identifier of the article
+          required: true
+    - name: articles
+      path: /articles
+      operations:
+      - name: getarticles
+        method: GET
+        description: Get Articles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query string to filter articles by content
+        - name: tag
+          in: query
+          type: string
+          description: Filter by article tag
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of articles to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of articles to skip for pagination
+        - name: from
+          in: query
+          type: string
+          description: Start date filter in ISO 8601 format
+        - name: to
+          in: query
+          type: string
+          description: End date filter in ISO 8601 format
+  exposes:
+  - type: rest
+    namespace: public-articles-rest
+    port: 8080
+    description: REST adapter for US Army Public API — Articles. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/article/{id}
+      name: article-id
+      description: REST surface for article-id.
+      operations:
+      - method: GET
+        name: getarticlebyid
+        description: Get Article By ID
+        call: public-articles.getarticlebyid
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/articles
+      name: articles
+      description: REST surface for articles.
+      operations:
+      - method: GET
+        name: getarticles
+        description: Get Articles
+        call: public-articles.getarticles
+        with:
+          q: rest.q
+          tag: rest.tag
+          limit: rest.limit
+          offset: rest.offset
+          from: rest.from
+          to: rest.to
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-articles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for US Army Public API — Articles. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-article-id
+      description: Get Article By ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-articles.getarticlebyid
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-articles
+      description: Get Articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-articles.getarticles
+      with:
+        q: tools.q
+        tag: tools.tag
+        limit: tools.limit
+        offset: tools.offset
+        from: tools.from
+        to: tools.to
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: US Army Public API — News
+  description: 'US Army Public API — News. 1 operations. Lead operation: Get News Items. Self-contained Naftiko capability
+    covering one Us Army business surface.'
+  tags:
+  - Us Army
+  - News
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_ARMY_API_KEY: US_ARMY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-news
+    baseUri: https://api.army.mil/api/v1
+    description: US Army Public API — News business capability. Self-contained, no shared references.
+    resources:
+    - name: news
+      path: /news
+      operations:
+      - name: getnews
+        method: GET
+        description: Get News Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of news items to return
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset
+  exposes:
+  - type: rest
+    namespace: public-news-rest
+    port: 8080
+    description: REST adapter for US Army Public API — News. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/news
+      name: news
+      description: REST surface for news.
+      operations:
+      - method: GET
+        name: getnews
+        description: Get News Items
+        call: public-news.getnews
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-news-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for US Army Public API — News. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-news-items
+      description: Get News Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-news.getnews
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
