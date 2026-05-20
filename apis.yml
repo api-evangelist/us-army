@@ -1,5 +1,8 @@
 aid: us-army
 url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/apis.yml
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/us-army
 apis:
 - aid: us-army:us-army-public-api
   name: US Army Public API
