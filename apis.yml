@@ -1,6 +1,8 @@
 aid: us-army
 url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/us-army-agentic-access.yml
   - type: DomainSecurity
     url: security/us-army-domain-security.yml
   - type: LinkedIn
