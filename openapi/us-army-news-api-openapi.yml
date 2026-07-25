@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: US Army Public Articles News API
+  description: The US Army Public API provides public access to Army news articles, events, personnel information, and other publicly available Army information. The API is documented with Swagger UI at api.army.mil.
+  version: 2.0.0
+  contact:
+    name: US Army Web Support Team
+    url: https://api.army.mil/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://api.army.mil/api/v1
+  description: US Army Public API production server
+tags:
+- name: News
+paths:
+  /news:
+    get:
+      operationId: getNews
+      summary: Get News Items
+      description: Retrieve US Army news items including press releases and official announcements.
+      tags:
+      - News
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of news items to return
+        schema:
+          type: integer
+          default: 20
+      - name: offset
+        in: query
+        required: false
+        description: Pagination offset
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: List of news items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsList'
+components:
+  schemas:
+    NewsList:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsItem'
+    NewsItem:
+      type: object
+      description: A US Army press release or news item
+      properties:
+        id:
+          type: string
+          description: Unique news item identifier
+        headline:
+          type: string
+          description: News headline
+        summary:
+          type: string
+          description: Brief summary
+        publishedDate:
+          type: string
+          format: date-time
+          description: Publication date
+        url:
+          type: string
+          format: uri
+          description: Link to full news item
+        source:
+          type: string
+          description: Publishing organization
+      required:
+      - id
+      - headline
+      - publishedDate
