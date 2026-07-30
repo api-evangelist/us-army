@@ -8,54 +8,94 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/us-army
 apis:
-  - aid: us-army:us-army-public-api
-    name: US Army Public API
-    tags:
-      - Army
-      - Federal Government
-      - Military
-      - News
-      - Articles
-      - Public Information
-    humanURL: https://api.army.mil/
-    baseURL: https://api.army.mil/api/v1
-    properties:
-      - url: https://api.army.mil/
-        type: Documentation
-      - url: https://api.army.mil/
-        type: SwaggerUI
-      - url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/openapi/us-army-public-openapi.yml
-        type: OpenAPI
-      - url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/rules/us-army-public-rules.yml
-        type: SpectralRuleset
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-schema/us-army-article-schema.json
-        type: JSONSchema
-      - url: https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-ld/us-army-context.jsonld
-        type: JSONLDContext
-    description: >-
-      The US Army Public API provides public access to Army news articles, events, and official announcements.
-      Documented with OpenAPI 3 (OAS3) and a Swagger UI interface at api.army.mil. The API enables access to Army
-      content including articles, news items, and public events.
-  - aid: us-army:us-army-open-data
-    name: US Army Open Data
-    tags:
-      - Army
-      - Federal Government
-      - Open Data
-      - Military
-    humanURL: https://www.army.mil/
-    properties:
-      - url: https://www.army.mil/
-        type: Documentation
-      - url: https://catalog.data.gov/dataset?publisher=US+Army
-        type: DataGov
-      - url: https://github.com/USArmyResearchLab
-        type: GitHubOrg
-    description: >-
-      The US Army provides open data resources through data.gov and maintains open source projects through the US Army
-      Research Laboratory GitHub organization. Army data includes geospatial datasets, research publications, and public
-      information resources.
+- aid: us-army:us-army-open-data
+  name: US Army Open Data
+  tags:
+  - Army
+  - Federal Government
+  - Open Data
+  - Military
+  humanURL: https://www.army.mil/
+  properties:
+  - url: https://www.army.mil/
+    type: Documentation
+  - url: https://catalog.data.gov/dataset?publisher=US+Army
+    type: DataGov
+  - url: https://github.com/USArmyResearchLab
+    type: GitHubOrg
+  description: >-
+    The US Army provides open data resources through data.gov and maintains open source projects through
+    the US Army Research Laboratory GitHub organization. Army data includes geospatial datasets, research
+    publications, and public information resources.
+- aid: us-army:us-army-articles-api
+  name: US Army Articles API
+  description: The Articles API from US Army — 2 operation(s) for articles.
+  humanURL: https://api.army.mil/
+  baseURL: https://api.army.mil/api/v1
+  tags:
+  - Articles
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-articles-api-openapi.yml
+  - type: Documentation
+    url: https://api.army.mil/
+  - type: SwaggerUI
+    url: https://api.army.mil/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/rules/us-army-public-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-schema/us-army-article-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-ld/us-army-context.jsonld
+- aid: us-army:us-army-events-api
+  name: US Army Events API
+  description: The Events API from US Army — 1 operation(s) for events.
+  humanURL: https://api.army.mil/
+  baseURL: https://api.army.mil/api/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-events-api-openapi.yml
+  - type: Documentation
+    url: https://api.army.mil/
+  - type: SwaggerUI
+    url: https://api.army.mil/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/rules/us-army-public-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-schema/us-army-article-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-ld/us-army-context.jsonld
+- aid: us-army:us-army-news-api
+  name: US Army News API
+  description: The News API from US Army — 1 operation(s) for news.
+  humanURL: https://api.army.mil/
+  baseURL: https://api.army.mil/api/v1
+  tags:
+  - News
+  properties:
+  - type: OpenAPI
+    url: openapi/us-army-news-api-openapi.yml
+  - type: Documentation
+    url: https://api.army.mil/
+  - type: SwaggerUI
+    url: https://api.army.mil/
+  - type: SpectralRuleset
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/rules/us-army-public-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-schema/us-army-article-schema.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-ld/us-army-context.jsonld
 name: US Army
 tags:
   - Army
@@ -65,7 +105,19 @@ tags:
   - Open Data
   - News
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/us-army.png
 access: 3rd-Party
 created: '2024-11-21'
 modified: '2026-05-19'
