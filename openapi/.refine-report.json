@@ -1,0 +1,18 @@
+{
+  "provider": "us-army",
+  "sources": [
+    "us-army-articles-api-openapi.yml",
+    "us-army-events-api-openapi.yml",
+    "us-army-news-api-openapi.yml"
+  ],
+  "outputs": [
+    "us-army-articles-api-openapi.yml",
+    "us-army-events-api-openapi.yml",
+    "us-army-news-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
