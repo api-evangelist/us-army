@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "US Army Public Articles API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Articles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Article By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.army.mil/api/v1/article/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the article"
+              }
+            ]
+          },
+          "docs": "Find and retrieve a specific Army news article by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Get Articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.army.mil/api/v1/articles",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string to filter articles by content"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by article tag"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of articles to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of articles to skip for pagination"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter in ISO 8601 format"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End date filter in ISO 8601 format"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of publicly available US Army news articles, filtered by various criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "US Army Public Articles Events API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.army.mil/api/v1/events",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End date filter"
+              }
+            ]
+          },
+          "docs": "Retrieve publicly available US Army events and activities."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,296 @@
+{
+  "item": [
+    {
+      "id": "fcd41a32-509f-4ab7-9e10-fd1eee3fb31e",
+      "name": "Articles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7f31b15-8ecd-4768-b0e2-7580e7763544",
+          "name": "Get Article By ID",
+          "request": {
+            "name": "Get Article By ID",
+            "description": {
+              "content": "Find and retrieve a specific Army news article by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "article",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the article"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "606c8060-8f51-4908-ab03-d71aa95eeafb",
+              "name": "Successful response with article data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "article",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the article"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"publishedDate\": \"2019-03-09T03:17:54.602Z\",\n  \"summary\": \"string\",\n  \"body\": \"string\",\n  \"author\": \"string\",\n  \"updatedDate\": \"1968-12-24T10:35:22.388Z\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"imageUrl\": \"http://IMDTjaLuyFCM.xtzxTcEpVboCA9vrcgk.EQo\",\n  \"url\": \"http://CMUtaq.jvLpwF8LE3WSJ102mIrj0QNegV,oJZ6w\",\n  \"sourceOrg\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "086d699c-1433-45f1-b42c-a4045277fed7",
+              "name": "Article not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "article",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the article"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1925,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "724f81c5-2660-40bf-8ca4-ff3f92f921c3",
+          "name": "Get Articles",
+          "request": {
+            "name": "Get Articles",
+            "description": {
+              "content": "Retrieve a list of publicly available US Army news articles, filtered by various criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "articles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query string to filter articles by content"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter by article tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of articles to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of articles to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "Start date filter in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "End date filter in ISO 8601 format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcd75bcc-be7c-45d4-b338-667e1536aab0",
+              "name": "List of articles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "articles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 8868,\n  \"limit\": 8149,\n  \"offset\": 1942,\n  \"articles\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"publishedDate\": \"1951-12-19T19:38:13.110Z\",\n      \"summary\": \"string\",\n      \"body\": \"string\",\n      \"author\": \"string\",\n      \"updatedDate\": \"1997-07-08T12:43:41.989Z\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"imageUrl\": \"http://kMcpVmNoaFyjwkXE.gaglaEU0yGVeq6xCd2V5RnCGU9nvyDwbwLr4h-iIhkOWKZn.qkgl6RhrQEgg25W\",\n      \"url\": \"http://ODpJZGFEdgBZbhQQpR.hlKxtAi55MGhm3Fn0ZUc51bLsqc05b4jxx,W-98ECwU1wVZw6IK7qlpnlSNEHCFfnFko69TaOJEruVdTAs\",\n      \"sourceOrg\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"publishedDate\": \"2016-07-27T00:46:32.612Z\",\n      \"summary\": \"string\",\n      \"body\": \"string\",\n      \"author\": \"string\",\n      \"updatedDate\": \"1954-01-16T20:11:52.653Z\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"imageUrl\": \"https://wGltaejuDchN.xxAEQj0Q-BgsToJ+MsEqDaOvtCNT252hcMHl.cQ00q\",\n      \"url\": \"https://VvbifZuZGxnsuerpjuVkwH.jjgio8SQ7MgPn0pg2lyofZWGpvE-5YEqt-TtIew2SN5MuxcR,xJsYt7L1,O0mKnZ0G9,h1L-FUPrLF\",\n      \"sourceOrg\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.army.mil/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "51d378bd-3a7f-4f2d-bbb1-e0afb08ffd96",
+    "name": "US Army Public Articles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The US Army Public API provides public access to Army news articles, events, personnel information, and other publicly available Army information. The API is documented with Swagger UI at api.army.mil.\n\nContact Support:\n Name: US Army Web Support Team",
+      "type": "text/plain"
+    }
+  }
+}

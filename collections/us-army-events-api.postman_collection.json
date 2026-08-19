@@ -1,0 +1,144 @@
+{
+  "item": [
+    {
+      "id": "77472fbb-b047-4dd6-90dc-f03feaaeb3b2",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43f6758c-fd29-4b79-b49c-e52ee4dcded7",
+          "name": "Get Events",
+          "request": {
+            "name": "Get Events",
+            "description": {
+              "content": "Retrieve publicly available US Army events and activities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of events to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "Start date filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "End date filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "320e32b5-65aa-448f-b937-c1cfed34936b",
+              "name": "List of events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9108,\n  \"limit\": 9378,\n  \"offset\": 6804,\n  \"events\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"startDate\": \"2025-04-06T07:18:58.038Z\",\n      \"description\": \"string\",\n      \"endDate\": \"1991-11-03T07:28:50.748Z\",\n      \"location\": \"string\",\n      \"url\": \"https://rAweIzbSDBmAwWwJnUpOqfSSumvUaOci.jnzfvzLWdNuVIr1LWmD9wNu1gZEcrR4ayG-GI4EhRFxtkkbv3,Y7,p5\",\n      \"category\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"startDate\": \"1985-02-03T22:37:10.083Z\",\n      \"description\": \"string\",\n      \"endDate\": \"2019-10-04T08:27:14.033Z\",\n      \"location\": \"string\",\n      \"url\": \"https://JLmgJHlUotOpHyTsEhUFHpoY.xlcxT\",\n      \"category\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.army.mil/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ecf08134-b07f-48d8-8af3-f7565f0be90a",
+    "name": "US Army Public Articles Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The US Army Public API provides public access to Army news articles, events, personnel information, and other publicly available Army information. The API is documented with Swagger UI at api.army.mil.\n\nContact Support:\n Name: US Army Web Support Team",
+      "type": "text/plain"
+    }
+  }
+}
