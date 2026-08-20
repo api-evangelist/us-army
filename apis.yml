@@ -12,6 +12,11 @@ apis:
   name: US Army Open Data
   tags:
   - Army
+  - Federal-Government
+  - Open Data
+  - Military
+  tags_raw:
+  - Army
   - Federal Government
   - Open Data
   - Military
@@ -56,6 +61,8 @@ apis:
   humanURL: https://api.army.mil/
   baseURL: https://api.army.mil/api/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -98,6 +105,13 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/us-army/refs/heads/main/json-ld/us-army-context.jsonld
 name: US Army
 tags:
+  - Army
+  - Federal-Government
+  - Military
+  - Defense
+  - Open Data
+  - News
+tags_raw:
   - Army
   - Federal Government
   - Military
