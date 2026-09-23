@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: US Army Public Articles Events API
+  title: US Army Public Events API
   description: The US Army Public API provides public access to Army news articles, events, personnel information, and other publicly available Army information. The API is documented with Swagger UI at api.army.mil.
   version: 2.0.0
   contact:
@@ -60,6 +60,19 @@ paths:
                 $ref: '#/components/schemas/EventList'
 components:
   schemas:
+    EventList:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
     Event:
       type: object
       description: A US Army public event or activity
@@ -95,16 +108,3 @@ components:
       - id
       - title
       - startDate
-    EventList:
-      type: object
-      properties:
-        total:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'

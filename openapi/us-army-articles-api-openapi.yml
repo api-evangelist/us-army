@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: US Army Public Articles API
   description: The US Army Public API provides public access to Army news articles, events, personnel information, and other publicly available Army information. The API is documented with Swagger UI at api.army.mil.
@@ -116,6 +116,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Article'
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error description
     Article:
       type: object
       description: A US Army news article or content item
@@ -163,12 +172,3 @@ components:
       - id
       - title
       - publishedDate
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        message:
-          type: string
-          description: Error description

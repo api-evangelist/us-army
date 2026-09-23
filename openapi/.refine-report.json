@@ -1,9 +1,7 @@
 {
   "provider": "us-army",
   "sources": [
-    "us-army-articles-api-openapi.yml",
-    "us-army-events-api-openapi.yml",
-    "us-army-news-api-openapi.yml"
+    "_original/us-army-public-openapi.yml"
   ],
   "outputs": [
     "us-army-articles-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "us-army-public-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "us-army-public-openapi.yml: declared missing tag: Articles",
+    "us-army-public-openapi.yml: declared missing tag: Events",
+    "us-army-public-openapi.yml: declared missing tag: News",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "us-army-articles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-army-news-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
