@@ -12,7 +12,7 @@ apis:
   name: US Army Open Data
   tags:
   - Army
-  - Federal-Government
+  - Federal Government
   - Open Data
   - Military
   tags_raw:
@@ -20,6 +20,7 @@ apis:
   - Federal Government
   - Open Data
   - Military
+  - Federal-Government
   humanURL: https://www.army.mil/
   properties:
   - url: https://www.army.mil/
@@ -106,7 +107,7 @@ apis:
 name: US Army
 tags:
   - Army
-  - Federal-Government
+  - Federal Government
   - Military
   - Defense
   - Open Data
@@ -118,6 +119,7 @@ tags_raw:
   - Defense
   - Open Data
   - News
+  - Federal-Government
 kind: contract
 deliveryModel:
   model: unknown

@@ -46,6 +46,19 @@ paths:
                 $ref: '#/components/schemas/NewsList'
 components:
   schemas:
+    NewsList:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsItem'
     NewsItem:
       type: object
       description: A US Army press release or news item
@@ -74,16 +87,3 @@ components:
       - id
       - headline
       - publishedDate
-    NewsList:
-      type: object
-      properties:
-        total:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsItem'
