@@ -100,15 +100,22 @@ paths:
                 $ref: '#/components/schemas/ArticleList'
 components:
   schemas:
-    Error:
+    ArticleList:
       type: object
       properties:
-        status:
+        total:
           type: integer
-          description: HTTP status code
-        message:
-          type: string
-          description: Error description
+          description: Total number of articles matching the query
+        limit:
+          type: integer
+          description: Number of articles per page
+        offset:
+          type: integer
+          description: Pagination offset
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
     Article:
       type: object
       description: A US Army news article or content item
@@ -156,19 +163,12 @@ components:
       - id
       - title
       - publishedDate
-    ArticleList:
+    Error:
       type: object
       properties:
-        total:
+        status:
           type: integer
-          description: Total number of articles matching the query
-        limit:
-          type: integer
-          description: Number of articles per page
-        offset:
-          type: integer
-          description: Pagination offset
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Article'
+          description: HTTP status code
+        message:
+          type: string
+          description: Error description
