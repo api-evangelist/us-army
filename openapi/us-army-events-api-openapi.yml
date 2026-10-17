@@ -60,19 +60,6 @@ paths:
                 $ref: '#/components/schemas/EventList'
 components:
   schemas:
-    EventList:
-      type: object
-      properties:
-        total:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
     Event:
       type: object
       description: A US Army public event or activity
@@ -108,3 +95,16 @@ components:
       - id
       - title
       - startDate
+    EventList:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
